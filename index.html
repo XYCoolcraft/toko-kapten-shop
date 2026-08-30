@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KingStore - Top Up & Jasa Digital</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">👑 KingStore</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Produk</a>
+    <a href="#services">Jasa</a>
+    <a href="/orders">Pesanan</a>
+    <a href="/account">Akun</a>
+  </nav>
+  <a href="/login" class="btn">Login</a>
+</header>
+
+<main>
+
+<section id="home" class="hero">
+  <div>
+    <h1>KingStore</h1>
+    <p>Top Up Game, VPS, Jasa Script, Pembuatan Website dan layanan digital lainnya.</p>
+    <a href="#products" class="btn">Belanja Sekarang</a>
+  </div>
+</section>
+
+<section id="products" class="section">
+  <h2>🔥 Top Up Game</h2>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-icon">🔥</div>
+      <h3>Free Fire</h3>
+      <p>Top Up Diamond Free Fire</p>
+      <button class="btn" onclick="openProduct('freefire')">Pilih Diamond</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">🎮</div>
+      <h3>Mobile Legends</h3>
+      <p>Top Up Diamond Mobile Legends</p>
+      <button class="btn" onclick="openProduct('ml')">Pilih Diamond</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>🖥️ VPS</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-icon">🖥️</div>
+      <h3>VPS Hosting</h3>
+      <p>Pilih spesifikasi VPS sesuai kebutuhan.</p>
+      <button class="btn" onclick="openProduct('vps')">Pilih VPS</button>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <h2>🛠️ Jasa Digital</h2>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <h3>Jasa Perbaikan Script</h3>
+      <p>Perbaikan error pada website, bot atau script.</p>
+      <button class="btn" onclick="buyService('Jasa Perbaikan Script')">Pesan</button>
+    </div>
+
+    <div class="product-card">
+      <h3>Pembuatan Website</h3>
+      <p>Website toko online, portfolio dan kebutuhan lainnya.</p>
+      <button class="btn" onclick="buyService('Pembuatan Website')">Pesan</button>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProduct()">×</span>
+    <h2 id="modalTitle">Pilih Produk</h2>
+    <div id="productOptions"></div>
+  </div>
+</div>
+
+<script type="module" src="/js/firebase.js"></script>
+<script type="module" src="/js/products.js"></script>
+<script type="module" src="/js/cart.js"></script>
+
+</body>
+</html>
