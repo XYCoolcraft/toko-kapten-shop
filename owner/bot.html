@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Control</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">🤖 Bot Control</div>
+  <a href="/owner/index.html" class="btn">Dashboard</a>
+</header>
+<section class="section">
+  <div class="product-card">
+    <h2>Status Bot</h2>
+    <h1 id="status">Loading...</h1><br>
+    <button class="btn" id="toggle">Toggle Bot</button>
+  </div>
+</section>
+<script type="module">
+import { db } from "/js/firebase.js";
+import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const ref = doc(db, "settings", "store");
+
+async function load() {
+  const snapshot = await getDoc(ref);
+  const data = snapshot.data();
+  document.getElementById("status").textContent = data.botStatus === "maintenance" ? "🔴 MAINTENANCE" : "🟢 AKTIF";
+}
+
+document.getElementById("toggle").onclick = async () => {
+  const snapshot = await getDoc(ref);
+  const data = snapshot.data();
+  const newStatus = data.botStatus === "maintenance" ? "active" : "maintenance";
+  await updateDoc(ref, { botStatus: newStatus });
+  load();
+};
+
+load();
+</script>
+</body>
+</html>
